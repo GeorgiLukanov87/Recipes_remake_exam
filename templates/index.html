@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <div class="container">
-
         <h1>My Recipes</h1>
-        <h2>There are no recipes.</h2>
-        <div class="items-container">
+        {% if recipes %}
+            {% for recipe in recipes %}
 
+            <div class="items-container">
             <div class="item">
-                <h2>Homemade Chicken Soup</h2>
-                <img class="detail-img" src="https://i.ytimg.com/vi/o91gT73mQhg/maxresdefault.jpg" alt="recipe-image">
+                <h2>{{ recipes.title }}</h2>
+                <img class="detail-img" src="{{ recipe.image_url }}" alt="recipe-image">
                 <div class="recipe-info">
-                    Put the chicken, carrots, celery and onion in a large soup pot and cover with cold water. Heat and simmer, uncovered, until the chicken meat falls off of the bones (skim off foam every so often). Take everything out of the pot. Strain the broth. Pick
-                    the meat off of the bones and chop the carrots, celery and onion. Season the broth with salt, pepper and chicken bouillon to taste, if desired. Return the chicken, carrots, celery and onion to the pot, stir together, and serve.
+                    {{ recipes.description }}
                 </div>
                 <div class="buttons-container">
-                    <a class="button detail" href="details.html">Details</a>
-                    <a class="button edit" href="edit.html">Edit</a>
-                    <a class="button delete" href="delete.html">Delete</a>
+                    <a class="button detail" href="{% url 'details_recipe' id=recipe.pk %}">Details</a>
+                    <a class="button edit" href="{% url 'edit-recipe' id=recipe.pk %}">Edit</a>
+                    <a class="button delete" href="{% url 'delete-recipe' id=recipe.pk %}">Delete</a>
                 </div>
             </div>
 
-            
-        </div>
+            {% endfor %}
+        {% else %}
+            <h2>There are no recipes.</h2>
+        {% endif %}
 
+        </div>
     </div>
 
 {% endblock %}
