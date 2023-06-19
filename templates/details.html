@@ -15,12 +15,14 @@
                     <p>30min</p>
                 </div>
                 <h3>Ingredients</h3>
+
                 <ul>
                     {% for ingredient in ingredients %}
-                    <li>{{ recipe.ingredients }}</li>
+                        <li>{{ ingredient }}</li>
                     {% endfor %}
 
                 </ul>
+
                 <h3>How to prepare?</h3>
                 <div class="recipe-info-full">
                     {{ recipe.description }}

@@ -70,7 +70,7 @@ def delete_recipe(request, id):
 
 def details_recipe(request, id):
     recipe = Recipe.objects.filter(pk=id).get()
-    ingredients = recipe.ingredients
+    ingredients = recipe.ingredients.strip().split(', ')
 
     context = {
         'recipe': recipe,
