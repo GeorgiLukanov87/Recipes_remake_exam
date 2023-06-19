@@ -69,4 +69,12 @@ def delete_recipe(request, id):
 
 
 def details_recipe(request, id):
-    return render(request, 'details.html')
+    recipe = Recipe.objects.filter(pk=id).get()
+    ingredients = recipe.ingredients
+
+    context = {
+        'recipe': recipe,
+        'ingredients': ingredients,
+    }
+
+    return render(request, 'details.html', context, )
