@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <div class="container">
         <h1>My Recipes</h1>
+    <div class="container">
+        <div class="items-container">
+
         {% if recipes %}
             {% for recipe in recipes %}
 
-            <div class="items-container">
             <div class="item">
                 <h2>{{ recipes.title }}</h2>
                 <img class="detail-img" src="{{ recipe.image_url }}" alt="recipe-image">
