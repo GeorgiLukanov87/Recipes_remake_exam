@@ -1,8 +1,15 @@
 from django.shortcuts import render
 
+from Recipes_remake_exam.my_web.models import Recipe
+
 
 def index(request):
-    return render(request, 'index.html')
+    recipes = Recipe.objects.all()
+
+    context = {
+        'recipes': recipes,
+    }
+    return render(request, 'index.html', context)
 
 
 def create_recipe(request):
